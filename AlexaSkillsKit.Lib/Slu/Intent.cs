@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace AlexaSkillsKit.Slu
 {
@@ -15,12 +16,10 @@ namespace AlexaSkillsKit.Slu
         /// <param name="json"></param>
         /// <returns></returns>
         public static Intent FromJson(JObject json) {
-            var slots = new Dictionary<string, Slot>();
-            if (json["slots"] != null && json.Value<JObject>("slots").HasValues) {
-                foreach (var slot in json.Value<JObject>("slots").Children()) {
-                    slots.Add(slot.Value<JProperty>().Name, Slot.FromJson(slot.Value<JProperty>().Value as JObject));
-                }
-            }
+
+            var slots = json["slots"] != null
+                ? JsonConvert.DeserializeObject<Dictionary<string, Slot>>(json["slots"].ToString())
+                : new Dictionary<string, Slot>();
 
             return new Intent {
                 Name = json.Value<string>("name"),

@@ -63,6 +63,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sdk.cs" />
     <Compile Include="Slu\Intent.cs" />
+    <Compile Include="Slu\Resolutions.cs" />
+    <Compile Include="Slu\ResolutionPerAuthority.cs" />
+    <Compile Include="Slu\ResolutionStatus.cs" />
+    <Compile Include="Slu\ResolutionStatusCode.cs" />
+    <Compile Include="Slu\ResolutionValue.cs" />
+    <Compile Include="Slu\ResolutionValueEntry.cs" />
     <Compile Include="Slu\Slot.cs" />
     <Compile Include="Speechlet\IntentRequest.cs" />
     <Compile Include="Speechlet\ISpeechlet.cs" />

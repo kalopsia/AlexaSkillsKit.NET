@@ -2,30 +2,20 @@
 
 using System;
 using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace AlexaSkillsKit.Slu
 {
     public class Slot
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="json"></param>
-        /// <returns></returns>
-        public static Slot FromJson(JObject json) {
-            return new Slot {
-                Name = json.Value<string>("name"),
-                Value = json.Value<string>("value")
-            };
-        }
-        
-        public virtual string Name {
-            get;
-            set;
-        }
-        public virtual string Value {
-            get;
-            set;
-        }
+        [JsonProperty("name")]
+        public virtual string Name { get; set; }
+
+        [JsonProperty("value")]
+        public virtual string Value { get; set; }
+
+        [JsonProperty("resolutions")]
+        public virtual Resolutions Resolutions { get; set; }
     }
 }
